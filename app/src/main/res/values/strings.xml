@@ -4,4 +4,6 @@
     <string name="quiz_question">Beijing is the largest city in China.</string>
     <string name="quiz_true">True</string>
     <string name="quiz_false">False</string>
+    <string name="quiz_correct">Correct!</string>
+    <string name="quiz_incorrect">Incorrect!</string>
 </resources>
