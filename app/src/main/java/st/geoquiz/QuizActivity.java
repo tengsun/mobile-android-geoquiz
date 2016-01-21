@@ -1,20 +1,30 @@
 package st.geoquiz;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
 
     private Button trueButton;
     private Button falseButton;
+    private Button nextButton;
+    private TextView questionText;
+    private int currentIndex = 0;
+
+    private QuizQuestion[] questions = new QuizQuestion[] {
+            new QuizQuestion(R.string.quiz_bj, false),
+            new QuizQuestion(R.string.quiz_sh, true),
+            new QuizQuestion(R.string.quiz_nj, false),
+            new QuizQuestion(R.string.quiz_sz, false),
+            new QuizQuestion(R.string.quiz_tp, true)
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,28 +37,60 @@ public class QuizActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // set action listeners
-        setActionListeners();
+        // set child views
+        setChildViews();
+
+        // set control actions
+        setControlActions();
     }
 
-    private void setActionListeners() {
-        // assign value to buttons
+    private void setChildViews() {
+        questionText = (TextView) findViewById(R.id.text_question);
+        updateQuestion();
+
         trueButton = (Button) findViewById(R.id.button_true);
         falseButton = (Button) findViewById(R.id.button_false);
+        nextButton = (Button) findViewById(R.id.button_next);
+    }
 
+    private void setControlActions() {
         // set event handlers
         trueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(QuizActivity.this, R.string.quiz_incorrect, Toast.LENGTH_SHORT).show();
+                checkAnswer(true);
             }
         });
         falseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(QuizActivity.this, R.string.quiz_correct, Toast.LENGTH_SHORT).show();
+                checkAnswer(false);
             }
         });
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentIndex = (currentIndex + 1) % questions.length;
+                updateQuestion();
+            }
+        });
+    }
+
+    private void updateQuestion() {
+        int question = questions[currentIndex].getQuestion();
+        questionText.setText(question);
+    }
+
+    private void checkAnswer(boolean answer) {
+        boolean isTrue = questions[currentIndex].isTrue();
+
+        int messageId;
+        if (answer == isTrue) {
+            messageId = R.string.quiz_correct;
+        } else {
+            messageId = R.string.quiz_incorrect;
+        }
+        Toast.makeText(QuizActivity.this, messageId, Toast.LENGTH_SHORT).show();
     }
 
     @Override

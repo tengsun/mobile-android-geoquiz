@@ -13,12 +13,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/quiz_question"
-        android:id="@+id/textView"
+        android:id="@+id/text_question"
         android:layout_gravity="center_horizontal"
         android:textSize="20sp"
         android:gravity="center"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"
+        android:text="[Quiz Question]" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -40,4 +40,12 @@
             android:allowUndo="false" />
 
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quiz_next"
+        android:id="@+id/button_next"
+        android:drawableRight="@drawable/arrow_right" />
+
 </LinearLayout>
