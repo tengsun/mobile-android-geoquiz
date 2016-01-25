@@ -44,6 +44,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/quiz_cheat"
+        android:id="@+id/button_cheat" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/quiz_next"
         android:id="@+id/button_next"
         android:drawableRight="@drawable/arrow_right" />

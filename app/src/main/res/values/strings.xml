@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">GeoQuiz</string>
     <string name="action_settings">Settings</string>
+
     <string name="quiz_bj">Beijing is the largest city in China.</string>
     <string name="quiz_sh">Shanghai is in the east of China.</string>
     <string name="quiz_nj">Nanjing is famous for the Forbidden City.</string>
@@ -11,4 +12,9 @@
     <string name="quiz_correct">Correct!</string>
     <string name="quiz_incorrect">Incorrect!</string>
     <string name="quiz_next">Next</string>
+
+    <string name="quiz_warning">Are you sure you want to do this?</string>
+    <string name="quiz_cheat">Cheat</string>
+    <string name="quiz_cheat_alert">You are cheating...</string>
+    <string name="quiz_show_answer">Show Answer</string>
 </resources>
